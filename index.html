@@ -1,84 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corner Percentage Page</title>
-  <style>
-    body {
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      font-size: 5rem;
-      color: black;
-      user-select: none;
-      touch-action: none;
-    }
-  </style>
-</head>
-<body>
-  <div id="percent">0%</div>
-
-  <script>
-    const percentDisplay = document.getElementById("percent");
-    const fileUrl "https://raw.githubusercontent.com/znarpic/----.1shadowchicks/main/xrexunknown0confusedrevXbresoersange.txt"; // <-- Replace with your file path
-    let holdTimer = null;
-    let holdStart = 0;
-
-    // Calculate proximity percentage
-    function updatePercentage(x, y) {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const distX = width - x;
-      const distY = y;
-      const maxDist = Math.sqrt(width ** 2 + height ** 2);
-      const dist = Math.sqrt(distX ** 2 + distY ** 2);
-      const percent = Math.round(100 - (dist / maxDist) * 100);
-      percentDisplay.textContent = Math.max(0, Math.min(100, percent)) + "%";
-    }
-
-    // For mouse
-    document.addEventListener("mousemove", e => {
-      updatePercentage(e.clientX, e.clientY);
-    });
-
-    // For touch (mobile)
-    document.addEventListener("touchmove", e => {
-      const touch = e.touches[0];
-      updatePercentage(touch.clientX, touch.clientY);
-    });
-
-    function startHold() {
-      holdStart = Date.now();
-      holdTimer = setTimeout(() => {
-        triggerDownload();
-      }, 10000); // 10 seconds
-    }
-
-    function stopHold() {
-      clearTimeout(holdTimer);
-    }
-
-    function triggerDownload() {
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.download = fileUrl.split("/").pop();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    // Desktop click hold
-    document.addEventListener("mousedown", startHold);
-    document.addEventListener("mouseup", stopHold);
-
-    // Mobile touch hold
-    document.addEventListener("touchstart", startHold);
-    document.addEventListener("touchend", stopHold);
-  </script>
-</body>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Corner Percentage Page</title>  
+  <style>  
+    body {  
+      background-color: white;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      height: 100vh;  
+      margin: 0;  
+      font-family: Arial, sans-serif;  
+      font-size: 5rem;  
+      color: black;  
+      user-select: none;  
+      touch-action: none;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div id="percent">0%</div>    <script>  
+    const percentDisplay = document.getElementById("percent");  
+    const fileUrl "https://raw.githubusercontent.com/znarpic/----.1shadowchicks/main/xrexunknown0confusedrevXbresoersange.txt"; // <-- Replace with your file path  
+    let holdTimer = null;  
+    let holdStart = 0;  
+  
+    // Calculate proximity percentage  
+    function updatePercentage(x, y) {  
+      const width = window.innerWidth;  
+      const height = window.innerHeight;  
+      const distX = width - x;  
+      const distY = y;  
+      const maxDist = Math.sqrt(width ** 2 + height ** 2);  
+      const dist = Math.sqrt(distX ** 2 + distY ** 2);  
+      const percent = Math.round(100 - (dist / maxDist) * 100);  
+      percentDisplay.textContent = Math.max(0, Math.min(100, percent)) + "%";  
+    }  
+  
+    // For mouse  
+    document.addEventListener("mousemove", e => {  
+      updatePercentage(e.clientX, e.clientY);  
+    });  
+  
+    // For touch (mobile)  
+    document.addEventListener("touchmove", e => {  
+      const touch = e.touches[0];  
+      updatePercentage(touch.clientX, touch.clientY);  
+    });  
+  
+    function startHold() {  
+      holdStart = Date.now();  
+      holdTimer = setTimeout(() => {  
+        triggerDownload();  
+      }, 10000); // 10 seconds  
+    }  
+  
+    function stopHold() {  
+      clearTimeout(holdTimer);  
+    }  
+  
+    function triggerDownload() {  
+      const link = document.createElement("a");  
+      link.href = fileUrl;  
+      link.download = fileUrl.split("/").pop();  
+      document.body.appendChild(link);  
+      link.click();  
+      document.body.removeChild(link);  
+    }  
+  
+    // Desktop click hold  
+    document.addEventListener("mousedown", startHold);  
+    document.addEventListener("mouseup", stopHold);  
+  
+    // Mobile touch hold  
+    document.addEventListener("touchstart", startHold);  
+    document.addEventListener("touchend", stopHold);  
+  </script>  </body>  
 </html>
